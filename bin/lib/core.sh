@@ -110,7 +110,7 @@ cibuild__core_get_base_image() {
     case "$image" in
       *:*)
         tag=$(printf "%s" "$image" | cut -f1 -d"@" | awk -F':' '{print $NF}')
-        local image_no_tag=$(printf "%s" "$image" | sed "s/:$tag\$//")
+        local image_no_tag=$(printf "%s" "$image"| cut -f1 -d"@" | sed "s/:$tag\$//")
         ;;
       *)
         local image_no_tag="$image"
